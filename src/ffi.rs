@@ -4,7 +4,7 @@
 //!
 //! There are four types of statics:
 //!
-//! - __Flags__, to be passed to `inotify_init1()`;
+//! - __Flags__, to be passed to `inotify_init()`;
 //! - __Events__, that describe which events should be
 //!   watched for (when calling `inotify_add_watch()`),
 //!   and which event has occured (when returned by
@@ -299,12 +299,6 @@ extern {
 	///
 	/// Returns a file descriptor referring to the inotify instance.
 	pub fn inotify_init() -> c_int;
-
-	/// Creates an inotify instance.
-	///
-	/// Also takes a bit mask of flags that provide access to extra
-	/// functionality. Returns a file descriptor.
-	pub fn inotify_init1(flags: c_int) -> c_int;
 
 	/// Manipulates the "watch list" associated with an inotify instance.
 	///

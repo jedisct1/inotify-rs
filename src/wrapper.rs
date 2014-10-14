@@ -32,11 +32,7 @@ pub struct INotify {
 
 impl INotify {
 	pub fn init() -> IoResult<INotify> {
-		INotify::init_with_flags(0)
-	}
-
-	pub fn init_with_flags(flags: int) -> IoResult<INotify> {
-		let fd = unsafe { ffi::inotify_init1(flags as c_int) };
+		let fd = unsafe { ffi::inotify_init() };
 
 		match fd {
 			-1 => Err(IoError::last_error()),
